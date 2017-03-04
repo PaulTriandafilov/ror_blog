@@ -9,12 +9,16 @@
     <table>
       <tr>
         <th>Blog name</th>
+        <th>Actions</th>
       </tr>
 
       <% @blogs.each do |blog| %>
           <tr>
-            <td>
-              <%= blog.name %> </td>
+            <td> <%= link_to blog.name, blog_path(blog) %> </td>
+            <td> <%= link_to 'Edit', edit_blog_path(blog) %> </td>
+            <td> <%= link_to 'Remove', blog_path(blog),
+                             method: :delete,
+                             data: {confirm: 'Are you sure?'}%> </td>
           </tr>
       <% end %>
 
