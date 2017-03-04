@@ -1,0 +1,23 @@
+<h1>Blog #<%= @blog.id %> - <%= @blog.name %>  </h1>
+
+<%= link_to 'Create new article', new_blog_article_path(@blog) %>
+
+<% if @blog.articles.empty? %>
+    <h1>No articles for this blog</h1>
+<% else %>
+    <table>
+      <tr>
+        <th>Title:</th>
+        <th>Text:</th>
+      </tr>
+
+      <% @blog.articles.each do |article| %>
+        <tr>
+          <td> <% article.title %> </td>
+          <td> <% article.text %> </td>
+        </tr>
+      <% end %>
+
+    </table>
+
+<% end %>
