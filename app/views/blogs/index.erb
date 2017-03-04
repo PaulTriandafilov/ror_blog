@@ -1,0 +1,25 @@
+<h1>List of Blogs</h1>
+
+<% link_to 'Create new blog', new_blog_path %>
+
+<% if @blogs.empty? %>
+    <h1>No Blogs in app</h1>
+
+<% else %>
+
+    <table>
+      <tr>
+        <th>Blog name</th>
+      </tr>
+
+      <% @blogs.each do |blog| %>
+          <tr>
+            <td>
+              <% blog.name %> </td>
+          </tr>
+      <% end %>
+
+    </table>
+
+<% end %>
+
