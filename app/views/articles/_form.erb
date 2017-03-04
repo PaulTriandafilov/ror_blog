@@ -1,4 +1,4 @@
-<%= form_for @article do |f| %>
+<%= form_for([@blog, @blog.articles.build])  do |f| %>
 
     <% if @article.errors.any? %>
         <div id="error_explanation">

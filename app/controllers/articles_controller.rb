@@ -7,22 +7,26 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @blog = Blog.find(params[:blog_id])
     @article = Article.find(params[:id])
   end
 
   def new
-    @article = Article.new
+    @blog = Blog.find(params[:blog_id])
+    @article = @blog.articles.new
   end
 
   def edit
+    @blog = Blog.find(params[:blog_id])
     @article = Article.find(params[:id])
   end
 
   def create
-    @article = Article.new(article_params)
+    @blog = Blog.find(params[:blog_id])
+    @article = @blog.articles.new(article_params)
 
     if @article.save
-      redirect_to @article
+      redirect_to @blog
     else
       render 'new'
     end
@@ -39,10 +43,11 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    @blog = Blog.find(params[:blog_id])
     @article = Article.find(params[:id])
     @article.destroy
 
-    redirect_to articles_path
+    redirect_to blog_path(@blog)
   end
 
   private
