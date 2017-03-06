@@ -1,15 +1,26 @@
-<p>
-  <strong>Commenter:</strong>
-  <%= comment.commenter %>
-</p>
+<div class="container">
+  <div class="col-md-4">
 
-<p>
-  <strong>Comment:</strong>
-  <%= comment.body %>
-</p>
+    <p>
+    <h4><%= comment.commenter %>
+      <small>(<%= comment.created_at.strftime("%B %d, %Y") %>)</small>
+    </h4>
+    </p>
 
-<p>
-  <%= link_to 'Remove Comment', [comment.article.blog, comment.article, comment],
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-</p>
+    <p>
+      <%= comment.body %>
+    </p>
+
+    <p>
+      <%= link_to 'Remove Comment', [comment.article.blog, comment.article, comment],
+                  method: :delete,
+                  data: {confirm: 'Are you sure?'} %>
+    </p>
+
+  </div>
+
+  <div class="col-md-4"></div>
+
+</div>
+
+<hr>

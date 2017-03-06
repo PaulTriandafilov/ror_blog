@@ -1,6 +1,6 @@
 <h1>Blog #<%= @blog.id %> - <%= @blog.name %>  </h1>
 
-<%= link_to 'Create new article', new_blog_article_path(@blog), class: "container" %>
+<h3><%= link_to 'Create new article', new_blog_article_path(@blog), class: "container" %></h3>
 
 <% if @blog.articles.empty? %>
     <h1>No articles for this blog</h1>
@@ -21,7 +21,7 @@
               <td> <%= article.text %> </td>
               <td> <%= link_to 'Edit', edit_blog_article_path(@blog, article) %> <%= link_to 'Remove', blog_article_path(@blog, article),
                                                                                              method: :delete,
-                                                                                             data: {confirm: 'Are you sure?'}%> </td>
+                                                                                             data: {confirm: 'Are you sure?'} %> </td>
             </tr>
         <% end %>
       </table>
@@ -29,4 +29,4 @@
 
 <% end %>
 
-<%= link_to 'Back to the list of blogs', :back %>
+<%= link_to 'Back to the list of blogs', blogs_path %>

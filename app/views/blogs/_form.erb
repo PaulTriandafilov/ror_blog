@@ -8,6 +8,11 @@
 <% end %>
 
 <%= form_for @blog do |f| %>
-    Name of Blog: <%= f.text_field :name %>
-    <%= f.submit %>
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+    <%= f.submit class: "btn-primary"%>
 <% end %>
+
+<%= link_to 'Back to the list of blogs', blogs_path%>
