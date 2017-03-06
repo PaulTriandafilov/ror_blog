@@ -1,28 +1,30 @@
 <h1>List of Blogs</h1>
 
-<%= link_to 'Create new blog', new_blog_path %>
+<%= link_to 'Create new blog', new_blog_path, class: "container" %>
 
 <% if @blogs.empty? %>
     <h1>No Blogs in app</h1>
 
 <% else %>
-    <table>
-      <tr>
-        <th>Blog name</th>
-        <th>Actions</th>
-      </tr>
+    <div class="container">
+      <table class="table table-hover">
+        <tr>
+          <th class="col-md-2">#</th>
+          <th class="col-md-5">Blog name</th>
+          <th class="col-md-5">Actions</th>
+        </tr>
 
-      <% @blogs.each do |blog| %>
-          <tr>
-            <td> <%= link_to blog.name, blog_path(blog) %> </td>
-            <td> <%= link_to 'Edit', edit_blog_path(blog) %> </td>
-            <td> <%= link_to 'Remove', blog_path(blog),
-                             method: :delete,
-                             data: {confirm: 'Are you sure?'}%> </td>
-          </tr>
-      <% end %>
+        <% @blogs.each do |blog| %>
+            <tr>
+              <td> <%= blog.id %> </td>
+              <td> <%= link_to blog.name, blog_path(blog) %> </td>
+              <td> <%= link_to 'Edit', edit_blog_path(blog) %> <%= link_to 'Remove', blog_path(blog),
+                                                                           method: :delete,
+                                                                           data: {confirm: 'Are you sure?'} %> </td>
+            </tr>
+        <% end %>
 
-    </table>
-
+      </table>
+    </div>
 <% end %>
 
