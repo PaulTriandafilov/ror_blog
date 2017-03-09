@@ -3,7 +3,8 @@ class ArticlesController < ApplicationController
   #http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
 
   def index
-    @articles = Article.all
+    @articles = Article.all.select { |article| article.blog_id.present? }
+    @unassigned_articles = Article.all.where(blog_id: nil)
   end
 
   def show

@@ -1,0 +1,28 @@
+<% if items.empty? %>
+    <h1>Table is empty</h1>
+
+<% else %>
+    <div class="container">
+      <table class="table table-hover">
+        <tr>
+          <th class="col-md-2">#</th>
+          <th class="col-md-3">Title</th>
+          <th class="col-md-5">Text</th>
+          <th class="col-md-2">Blog</th>
+        </tr>
+
+        <% items.each do |item| %>
+            <tr>
+              <td> <%= item.id %> </td>
+              <td> <%= item.title %> </td>
+              <td> <%= item.text %> </td>
+              <td>
+                <%= item.blog.name if item.blog.present? %>
+                <%= link_to('Assign Blog', '#') if !item.blog.present?%>
+              </td>
+            </tr>
+        <% end %>
+
+      </table>
+    </div>
+<% end %>
