@@ -18,7 +18,7 @@
               <td> <%= item.text %> </td>
               <td>
                 <%= item.blog.name if item.blog.present? %>
-                <%= link_to('Assign Blog', '#') if !item.blog.present?%>
+                <%= link_to('Assign Blog', edit_article_path(item)) if !item.blog.present?%>
               </td>
             </tr>
         <% end %>

@@ -43,11 +43,10 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @blog = Blog.find(params[:blog_id])
     @article = Article.find(params[:id])
     @article.destroy
 
-    redirect_to blog_path(@blog)
+    redirect_to blog_path(@article.blog)
   end
 
   private
