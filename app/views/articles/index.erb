@@ -1,22 +1,27 @@
-<h1>Listing articles</h1>
+<h1>List of Articles</h1>
 
-<%= link_to 'New article', new_article_path %>
+<% if @articles.empty? %>
+    <h1>No Articles in app</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-  </tr>
+<% else %>
+    <div class="container">
+      <table class="table table-hover">
+        <tr>
+          <th class="col-md-2">#</th>
+          <th class="col-md-3">Title</th>
+          <th class="col-md-5">Text</th>
+          <th class="col-md-2">Blog</th>
+        </tr>
 
-  <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.text %></td>
-        <td><%= link_to 'Show', article_path(article) %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article_path(article),
-                        method: :delete,
-                        data: {confirm: 'Are you sure?'} %></td>
-      </tr>
-  <% end %>
-</table>
+        <% @articles.each do |article| %>
+            <tr>
+              <td> <%= article.id %> </td>
+              <td> <%= article.title %> </td>
+              <td> <%= article.text %> </td>
+              <td> <%= article.blog.name %> </td>
+            </tr>
+        <% end %>
+
+      </table>
+    </div>
+<% end %>

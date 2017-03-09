@@ -1,12 +1,13 @@
-<h1>List of Blogs</h1>
-
-<h3><%= link_to 'Create new blog', new_blog_path, class: "container" %></h3>
+<div>
+  <div class="col-md-8"><h1>List of Blogs</h1></div>
+  <div class="col-md-4" align="right"><%= link_to 'Create new blog', new_blog_path%></div>
+</div>
 
 <% if @blogs.empty? %>
     <h1>No Blogs in app</h1>
 
 <% else %>
-    <div class="container">
+    <div>
       <table class="table table-hover">
         <tr>
           <th class="col-md-2">#</th>
@@ -16,7 +17,7 @@
 
         <% @blogs.each do |blog| %>
             <tr>
-              <td> <%= blog.id %> </td>
+              <td> <%= @blogs.index(blog) + 1 %> </td>
               <td> <%= link_to blog.name, blog_path(blog) %> </td>
               <td> <%= link_to 'Edit', edit_blog_path(blog) %> <%= link_to 'Remove', blog_path(blog),
                                                                            method: :delete,
