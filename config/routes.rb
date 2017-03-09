@@ -2,10 +2,12 @@ Rails.application.routes.draw do
 
   root 'blogs#index'
 
-  resources :blogs do
-    resources :articles do
-      resources :comments
-    end
+  resources :blogs, shallow: true do
+    resources :articles
+  end
+
+  resources :articles, shallow: true do
+    resources :comments
   end
 
   get 'articles', to: 'articles#index'

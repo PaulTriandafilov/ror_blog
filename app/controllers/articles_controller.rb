@@ -8,7 +8,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @blog = Blog.find(params[:blog_id])
     @article = Article.find(params[:id])
   end
 
@@ -18,7 +17,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @blog = Blog.find(params[:blog_id])
+    #@blog = Blog.find(params[:blog_id])
     @article = Article.find(params[:id])
   end
 
@@ -37,7 +36,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
-      redirect_to [@article.blog, @article]
+      redirect_to @article.blog
     else
       render 'edit'
     end
