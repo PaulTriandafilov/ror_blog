@@ -25,6 +25,8 @@
       <%= f.text_area :text, class: "form-control", rows: "3" %>
     </p>
 
+    <%= f.select(:blog_id, Blog.all.collect { |p| [p.name, p.id] }, @article.blog_id ? {} : {selected: @article.blog_id}) %>
+
     <p>
       <%= f.submit class: "btn-primary" %>
     </p>
