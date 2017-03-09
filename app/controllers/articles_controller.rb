@@ -46,7 +46,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.destroy
 
-    redirect_to blog_path(@article.blog)
+    @article.blog ? redirect_to(blog_path(@article.blog)) : redirect_to(articles_path)
   end
 
   private

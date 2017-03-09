@@ -18,7 +18,8 @@
               <td> <%= item.text %> </td>
               <td>
                 <%= item.blog.name if item.blog.present? %>
-                <%= link_to('Assign Blog', edit_article_path(item)) if !item.blog.present?%>
+                <%= link_to('Assign', edit_article_path(item))  if !item.blog.present?%>
+                <%= link_to('Remove', article_path(item), method: :delete, data: {confirm: 'Are you sure?'})  if !item.blog.present?%>
               </td>
             </tr>
         <% end %>

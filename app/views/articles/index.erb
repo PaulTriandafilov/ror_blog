@@ -3,5 +3,6 @@
 <%= render partial: "table", object: @articles, as: "items" %>
 
 <h1>List of unassigned Articles</h1>
+<p class="text-muted">(Assign blog to article or delete)</p>
 
 <%= render partial: "table", object: @unassigned_articles, as: "items" %>
